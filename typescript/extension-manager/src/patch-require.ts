@@ -22,6 +22,9 @@ const injectJsxGlobals = () => {
 	(globalThis as any)._jsxs = safeJsx(jsxs);
 	(globalThis as any)._jsxFragment = Fragment;
 
+	// Expose React globally for extensions that reference it directly
+	(globalThis as any).React = React;
+
 	// Expose React's SharedInternals globally so bundled React can use it
 	// This fixes the issue where bundled React has null ReactSharedInternals.H
 	(globalThis as any).__REACT_SHARED_INTERNALS__ = (React as any).__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
